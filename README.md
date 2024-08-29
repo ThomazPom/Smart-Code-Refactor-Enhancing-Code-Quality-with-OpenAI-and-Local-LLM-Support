@@ -1,6 +1,6 @@
 # Code Enhancer with OpenAI and Local LLM Support
 
-This script written by ChatGpt is designed to enhance the quality, maintainability, scalability, and performance of a codebase using either OpenAI's API or a local LLM (Ollama model). The script can automatically download, cache, and use the best Ollama model if specified. It supports different modes of operation, including API-based, clipboard mode, and local LLM mode.
+This script written by ChatGpt is designed to enhance the quality, maintainability, scalability, and performance of a codebase using either OpenAI's API or a local LLM (Ollama model). The script can automatically download, cache, and use a Ollama model if specified. It supports different modes of operation, including API-based, clipboard mode, and local LLM mode.
 
 ## Features
 
@@ -52,7 +52,7 @@ python script.py --input_directory path/to/code --clipboard_mode --results_file 
 Use a local Ollama model for code enhancement:
 
 ```bash
-python script.py --input_directory path/to/code --local_llm --ollama_model mistrall --results_file results.txt
+python script.py --input_directory path/to/code --local_llm --ollama_model mistral --results_file results.txt
 
 ```
 ## CLI Options
@@ -61,7 +61,7 @@ python script.py --input_directory path/to/code --local_llm --ollama_model mistr
     --output_dir: Directory to save enhanced files.
     --input_directory: Directory containing the code files to enhance.
     --openai_model: OpenAI model to use (e.g., gpt-4o-mini-2024-07-18).
-    --ollama_model: Ollama model to use for local LLM (e.g., mistrall).
+    --ollama_model: Ollama model to use for local LLM (e.g., mistral).
     --max_tokens: Maximum number of tokens for the OpenAI request.
     --temperature: Temperature for text generation.
     --api_key_path: Path to the file containing the OpenAI API key.
@@ -81,7 +81,7 @@ code_extensions:
 output_dir: output_directory
 input_directory: path_to_input_directory
 openai_model: gpt-4o-mini-2024-07-18
-ollama_model: mistrall
+ollama_model: mistral
 max_tokens: 100000
 temperature: 0.7
 api_key_path: .secret

@@ -158,7 +158,7 @@ def use_local_llm(prompt, model):
             raise EnvironmentError("Ollama command-line tool is not installed. Please install it to proceed.")
 
         # Download the model if not cached
-        subprocess.run(["ollama", "download", model], check=True)
+        subprocess.run(["ollama", "pull", model], check=True)
 
         # Run the model with the provided prompt
         result = subprocess.run(["ollama", "run", model, prompt], check=True, text=True, capture_output=True)

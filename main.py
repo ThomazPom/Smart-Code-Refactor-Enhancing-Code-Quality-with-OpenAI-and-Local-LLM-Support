@@ -8,7 +8,7 @@ import argparse
 import pyperclip  # To copy to clipboard
 import subprocess  # For downloading and running the Ollama model
 import shutil  # To check if commands are available
-
+import ollama
 # Constants
 CONFIG_FILE = 'config.yaml'
 DEFAULT_CONFIG = {
@@ -158,11 +158,20 @@ def use_local_llm(prompt, model):
             raise EnvironmentError("Ollama command-line tool is not installed. Please install it to proceed.")
 
         # Download the model if not cached
-        subprocess.run(["ollama", "pull", model], check=True)
+        ollama.pull(model)
+        result=[]
+        prompt = prompt[:100]
+        stream = ollama.chat(
+            model=model,
+            messages=[{'role': 'user', 'content': prompt}],
+            stream=True,
+        )
 
-        # Run the model with the provided prompt
-        result = subprocess.run(["ollama", "run", model, prompt], check=True, text=True, capture_output=True)
-        return result.stdout
+        for chunk in stream:
+            print(chunk['message']['content'], end='', flush=True)
+            result.append(chunk['message']['content'])
+
+        return "".join(result)
 
     except subprocess.CalledProcessError as e:
         print(f"Error running the Ollama model: {e}")

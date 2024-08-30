@@ -21,7 +21,7 @@ This script written by ChatGpt is designed to enhance the quality, maintainabili
 
 1. **Install Python Dependencies**:
     ```bash
-    pip install openai pyperclip pyyaml
+    pip install openai pyperclip pyyaml ollama
     ```
 
 2. **Install Ollama Command-Line Tool** (if using local LLM mode):
